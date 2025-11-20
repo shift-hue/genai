@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Transaction Categorizer — Demo</title>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <h1>AI Transaction Categorizer</h1>
+        <div class="subtitle">GHCI 2025 • Prototype</div>
+      </div>
+
+      <div class="header-actions" aria-hidden="false">
+        <div id="modelInfo" class="model-info" aria-live="polite">Model: <strong id="modelName">Running</strong></div>
+
+        <!-- theme toggle button (designer pill) -->
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle theme">
+          <span class="toggle-pill" aria-hidden="true">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <span class="dot" aria-hidden="true"></span>
+          </span>
+          <span id="themeLabel" class="theme-label">Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container grid">
+    <!-- left column -->
+    <section class="col main-col">
+      <div class="card" id="singleCard">
+        <h2>Single Transaction</h2>
+        <small class="muted">Type or paste a raw transaction string (e.g. <code>AMZN Mktp IN 1234</code>).</small>
+
+        <label for="txnInput">Description</label>
+        <input id="txnInput" type="text" placeholder="e.g., Starbucks 2345" autocomplete="off" />
+
+        <div class="row">
+          <button id="predictBtn" class="primary">Predict (Ctrl+Enter)</button>
+          <button id="rebuildBtn" class="ghost">Rebuild Index</button>
+        </div>
+
+        <section id="singleResultArea" class="result card-hidden" aria-live="polite">
+          <div class="result-header">
+            <div>
+              <div id="predCategory" class="pred-category">—</div>
+              <div id="predConfidence" class="pred-confidence">—</div>
+            </div>
+            <div class="index-stats">
+              <div>Top neighbors</div>
+            </div>
+          </div>
+
+          <div id="neighborsList" class="neighbors" aria-live="polite"></div>
+
+          <h3>Rationale</h3>
+          <div id="rationaleText" class="muted small">—</div>
+
+          <h3>Raw JSON</h3>
+          <div class="raw-actions">
+            <button id="copyJson" class="ghost-sm">Copy</button>
+            <button id="downloadJson" class="ghost-sm">Download</button>
+            <label class="muted small">Pretty / Collapsible JSON below</label>
+          </div>
+          <pre id="rawJson" class="json">No prediction yet</pre>
+        </section>
+      </div>
+
+      <div class="card">
+        <h2>CSV Batch Prediction</h2>
+        <small class="muted">Upload a CSV with a <code>transaction</code> column. Preview and then Predict.</small>
+
+        <input id="csvFile" type="file" accept=".csv" />
+        <div id="csvPreview" class="file-preview muted">No file selected</div>
+        <div class="row">
+          <button id="predictCsvBtn" class="primary">Predict CSV</button>
+          <button id="clearCsvBtn" class="ghost">Clear</button>
+        </div>
+
+        <pre id="batchResult" class="json hidden"></pre>
+      </div>
+    </section>
+
+    <!-- right column -->
+    <aside class="col side-col">
+      <div class="card">
+        <h2>Correction</h2>
+        <small class="muted">Correct the last prediction (prefilled) or paste a transaction.</small>
+
+        <label for="corr_txn">Transaction</label>
+        <input id="corr_txn" type="text" placeholder="Prefilled with last transaction" />
+
+        <label for="corr_label">Correct Category</label>
+        <select id="corr_label" aria-label="Select correct category"><option>Loading categories…</option></select>
+
+        <div class="row">
+          <button id="submitCorr" class="primary">Submit Correction</button>
+          <button id="autoAdd" class="ghost">Save & Add</button>
+        </div>
+
+        <div id="corrStatus" class="muted small" aria-live="polite"></div>
+      </div>
+
+      <div class="card">
+        <h2>Taxonomy Admin</h2>
+        <small class="muted">Upload a new <code>taxonomy.json</code>. Then rebuild index.</small>
+        <input id="taxfile" type="file" accept=".json" />
+        <div class="row">
+          <button id="uploadTax" class="primary">Upload Taxonomy</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Status</h2>
+        <div id="statusLog" class="muted small">Ready</div>
+        <div id="indexCount" class="muted small">Index: —</div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container footer muted">
+    Built for GHCI 2025 Hackathon • Prototype
+  </footer>
+
+  <!-- App script (deferred) -->
+  <script src="/ui/app.js" defer></script>
+</body>
+</html>

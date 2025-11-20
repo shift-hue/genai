@@ -1,0 +1,77 @@
+{
+  "unknown_category_id": "UNKNOWN",
+  "categories": [
+    {
+      "id": "GROCERIES",
+      "name": "Groceries",
+      "description": "Supermarkets, grocery stores, and food markets.",
+      "aliases": ["walmart", "aldi", "tesco", "safeway", "kroger", "whole foods", "grocery"]
+    },
+    {
+      "id": "RESTAURANTS",
+      "name": "Restaurants & Cafes",
+      "description": "Dining, cafes, bars, and fast food.",
+      "aliases": ["mcdonalds", "starbucks", "kfc", "burger king", "cafe", "restaurant", "pizza hut"]
+    },
+    {
+      "id": "TRANSPORT",
+      "name": "Transport",
+      "description": "Public transport, taxis, ride-sharing, fuel, and tolls.",
+      "aliases": ["uber", "lyft", "shell", "bp", "metro", "bus", "train", "taxi"]
+    },
+    {
+      "id": "UTILITIES",
+      "name": "Utilities",
+      "description": "Electricity, water, gas, and waste services.",
+      "aliases": ["electric", "water", "gas", "utility", "power", "energy"]
+    },
+    {
+      "id": "RENT",
+      "name": "Rent & Mortgage",
+      "description": "Rent, mortgage payments, and housing fees.",
+      "aliases": ["landlord", "rent", "mortgage"]
+    },
+    {
+      "id": "INCOME",
+      "name": "Income & Salary",
+      "description": "Salary, bonuses, and reimbursements.",
+      "aliases": ["payroll", "salary", "wage", "bonus", "refund"]
+    },
+    {
+      "id": "ENTERTAINMENT",
+      "name": "Entertainment",
+      "description": "Movies, streaming, games, and events.",
+      "aliases": ["netflix", "spotify", "cinema", "movie", "theatre", "game"]
+    },
+    {
+      "id": "HEALTHCARE",
+      "name": "Healthcare",
+      "description": "Medical, pharmacy, insurance health payments.",
+      "aliases": ["pharmacy", "hospital", "clinic", "doctor", "insurance health"]
+    },
+    {
+      "id": "SHOPPING",
+      "name": "Shopping",
+      "description": "General retail and online shopping.",
+      "aliases": ["amazon", "ebay", "mall", "store", "retail"]
+    },
+    {
+      "id": "SUBSCRIPTIONS",
+      "name": "Subscriptions",
+      "description": "Recurring digital or service subscriptions.",
+      "aliases": ["subscription", "subscr", "monthly", "plan"]
+    },
+    {
+      "id": "FEES",
+      "name": "Fees & Charges",
+      "description": "Bank fees, penalties, and service charges.",
+      "aliases": ["fee", "charge", "overdraft", "penalty"]
+    },
+    {
+      "id": "OTHER",
+      "name": "Other",
+      "description": "Miscellaneous or uncategorized transactions.",
+      "aliases": ["misc", "other"]
+    }
+  ]
+}
